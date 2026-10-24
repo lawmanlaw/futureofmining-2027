@@ -256,25 +256,26 @@
   watch();
 })();
 
-/* Ministry endorsement pop-up: appears at the screen edge when the endorsement bar comes into view,
-   stays about seven seconds, shows once per visit. */
+/* Ministry endorsement pop-up: timed to the hero film. It slides in at the screen edge the moment the
+   minister says "three consecutive years" (about 18 s in), on every loop, until the visitor closes it. */
 (function () {
-  const pop = document.getElementById('govPop'), bar = document.querySelector('.endorse');
-  if (!pop || !bar || !('IntersectionObserver' in window)) return;
-  let seen = false; try { seen = sessionStorage.getItem('fom27-govpop') === '1'; } catch (e) {}
-  if (seen) { pop.remove(); return; }
-  let t = 0;
-  const hide = () => { pop.classList.remove('on'); clearTimeout(t); setTimeout(() => pop.hidden = true, 700); };
-  pop.querySelector('.gov-pop-x').addEventListener('click', hide);
-  pop.addEventListener('mouseenter', () => clearTimeout(t));
-  pop.addEventListener('mouseleave', () => { t = setTimeout(hide, 3000); });
-  const io = new IntersectionObserver(es => {
-    if (!es.some(e => e.isIntersecting)) return;
-    io.disconnect();
-    try { sessionStorage.setItem('fom27-govpop', '1'); } catch (e) {}
+  const pop = document.getElementById('govPop'), v = document.querySelector('.film-video');
+  if (!pop || !v) return;
+  const CUE = 17.6, STAY = 6500;          // seconds into the film, and how long the card stays
+  let t = 0, closed = false, last = 0;
+  const hide = () => { pop.classList.remove('on'); clearTimeout(t); setTimeout(() => { if (!pop.classList.contains('on')) pop.hidden = true; }, 700); };
+  const show = () => {
+    if (closed) return;
     pop.hidden = false;
     requestAnimationFrame(() => requestAnimationFrame(() => pop.classList.add('on')));
-    t = setTimeout(hide, 7000);
-  }, { threshold: .6 });
-  io.observe(bar);
+    clearTimeout(t); t = setTimeout(hide, STAY);
+  };
+  pop.querySelector('.gov-pop-x').addEventListener('click', () => { closed = true; hide(); });
+  pop.addEventListener('mouseenter', () => clearTimeout(t));
+  pop.addEventListener('mouseleave', () => { if (pop.classList.contains('on')) t = setTimeout(hide, 2500); });
+  v.addEventListener('timeupdate', () => {
+    const now = v.currentTime;
+    if (last < CUE && now >= CUE && now < CUE + 2) show();   // crossed the line while playing (not a jump)
+    last = now;
+  });
 })();
