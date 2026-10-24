@@ -4,187 +4,234 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>The Future of Mining Summit 2027 | Gaborone, Botswana</title>
-<meta name="description" content="Botswana's premier mining conference returns in June 2027 for its fourth edition. Register, design your badge, exhibit or sponsor.">
+<meta name="description" content="Botswana's mining summit returns for its fourth edition in June 2027. Register, design your badge, book a stand and find your way around the Fairgrounds.">
 <meta property="og:title" content="The Future of Mining Summit 2027">
-<meta property="og:description" content="Botswana's premier mining conference returns in June 2027. Register and design your summit badge.">
-<meta property="og:image" content="assets/img/still-52.jpg">
-<meta name="theme-color" content="#000000">
+<meta property="og:description" content="The fourth edition, June 2027, Gaborone. Register, design your badge, book a stand.">
+<meta property="og:image" content="assets/img/ed-2026-hall.jpg">
+<meta name="theme-color" content="#eeebe3">
 <link rel="icon" type="image/png" href="assets/logos/fom-africa-mark.png">
-<link rel="preload" href="assets/fonts/archivo-expanded-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/site.css">
+<link rel="preload" href="assets/fonts/mona-sans-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/v6.css">
 <script>
-/* Play the intro once per visit; repeat views go straight to the site. */
-(function(){var d=document.documentElement;d.classList.add('js');try{if(sessionStorage.getItem('fom27-intro')==='1'||matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('no-splash');d.style.setProperty('--intro','0s')}}catch(e){}})();
-window.FOM_ASSETS = {
-  fomGold: "assets/logos/fom-summit-2027.png",
-  fomWhite: "assets/logos/fom-summit-2027-white.png",
-  markWhite: "assets/logos/fom-africa-mark-white.png",
-  projects: "assets/logos/the-projects.png",
-  coat: "assets/logos/coat-of-arms-botswana.png"
-};
+(function(){var d=document.documentElement;d.classList.add('js');try{if(sessionStorage.getItem('fom27-loader')==='1'||matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('no-splash');d.style.setProperty('--intro','0s')}}catch(e){}})();
+window.FOM_ASSETS = { fomGold: "assets/logos/fom-summit-2027.png", fomWhite: "assets/logos/fom-summit-2027-white.png", markWhite: "assets/logos/fom-africa-mark-white.png", projects: "assets/logos/the-projects.png", coat: "assets/logos/coat-of-arms-botswana.png" };
 </script>
 </head>
 <body>
 
-<!-- Intro: The Projects presents -->
-<div class="splash" id="splash" aria-hidden="true">
-  <div class="splash-cols cols-gold"><i></i><i></i><i></i><i></i><i></i></div>
-  <div class="splash-cols cols-navy"><i></i><i></i><i></i><i></i><i></i></div>
-  <div class="splash-stage">
-    <div class="tp" id="tp-splash"></div>
-    <p class="splash-tag">presents <b>The Future of Mining Summit 2027</b></p>
+<!-- LOADER -->
+<div class="loader" id="loader" role="dialog" aria-modal="true" aria-busy="true" aria-labelledby="ldTitle">
+  <div class="ld-top"><img src="assets/logos/fom-summit-2027.png" alt="The Future of Mining Summit 2027" width="1575" height="669"><p class="eyebrow">The Projects presents</p></div>
+  <div class="ld-mid">
+    <p class="eyebrow" id="ldTitle">Three summits in. Loading the fourth.</p>
+    <div class="ld-count" aria-hidden="true"><span>202</span><span class="ld-col"><span class="ld-strip"><i>4</i><i>5</i><i>6</i><i>7</i></span></span></div>
+    <div class="ld-enter">
+      <button class="btn btn-dark ld-go" type="button">Enter the summit <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4V5z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 010 7M18.5 5.5a9 9 0 010 13"/></svg></button>
+      <button class="ld-quiet" type="button" data-quiet>Enter without sound</button>
+    </div>
   </div>
+  <div class="ld-bottom"><p class="eyebrow"><span>Gaborone, Botswana</span><span>June 2027</span></p><div class="ld-bar"><span id="ldFill"></span></div></div>
 </div>
+<script src="assets/js/loader.js"></script>
 
 <a class="skip" href="#main">Skip to content</a>
 
-<header class="site-header" id="header">
-  <div class="wrap nav">
-    <a class="brand" href="#top" aria-label="The Future of Mining Summit 2027, home">
-      <img src="assets/logos/fom-summit-2027.png" alt="" width="1575" height="669">
-    </a>
-    <nav aria-label="Main">
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#about">About</a></li>
-        <li><a href="#themes">Themes</a></li>
-        <li><a href="#badge">Your badge</a></li>
-        <li><a href="#passes">Passes</a></li>
-        <li><a href="#exhibit">Exhibit</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-    <div class="nav-right">
-      <div class="social" data-socials></div>
-      <button class="btn btn-gold btn-sm" type="button" data-register>Register</button>
-      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span></button>
-    </div>
+<!-- HEADER -->
+<header class="hdr" id="header">
+  <a class="brand" href="#top" aria-label="The Future of Mining Summit 2027, home"><img src="assets/logos/fom-summit-2027.png" alt="" width="1575" height="669"></a>
+  <p class="hdr-next" aria-hidden="true"><span class="dot"></span>Next summit in <b data-cd="d">000</b> days</p>
+  <div class="hdr-right">
+    <button class="btn btn-gold btn-sm" type="button" data-register>Register</button>
+    <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span class="bars"><i></i><i></i></span><span class="menu-word">Menu</span></button>
   </div>
 </header>
 
+<!-- FULL-SCREEN MENU -->
+<nav class="menu" id="menu" aria-label="Main">
+  <div class="menu-imgs" aria-hidden="true">
+    <img src="assets/img/ed-2026-hall.jpg" alt="" class="on"><img src="assets/img/ed-2025-keynote.jpg" alt=""><img src="assets/img/still-77.jpg" alt=""><img src="assets/img/ed-2026-walk.jpg" alt="">
+  </div>
+  <ol class="menu-links" id="navLinks">
+    <li><a href="#summit" data-i="0"><i>01</i>The summit</a></li>
+    <li><a href="#journey" data-i="1"><i>02</i>Story</a></li>
+    <li><a href="#venue" data-i="2"><i>03</i>Venue and programme</a></li>
+    <li><a href="#badge" data-i="0"><i>04</i>Your badge</a></li>
+    <li><a href="#passes" data-i="1"><i>05</i>Passes</a></li>
+    <li><a href="#exhibit" data-i="2"><i>06</i>Exhibit</a></li>
+    <li><a href="#faq" data-i="3"><i>07</i>Questions</a></li>
+  </ol>
+  <div class="menu-foot">
+    <p class="eyebrow">Participation and partnerships</p>
+    <a data-config-href="email" href="#">info@futureofminingbw.com</a>
+    <div class="social" data-socials></div>
+  </div>
+</nav>
+
 <main id="main">
 
-<!-- HERO: the name, then the 2026 footage opening to the full screen -->
+<!-- HERO -->
 <section class="hero" id="top" aria-labelledby="heroTitle">
-  <div class="film" id="film">
-    <video class="film-video" src="assets/video/fom-2026-highlights.mp4" poster="assets/video/hero-poster.jpg" muted loop playsinline autoplay preload="auto" aria-label="Highlights from the 2026 summit: speakers, delegates and the exhibition floor"></video>
-  </div>
+  <div class="film" id="film"><video class="film-video" src="assets/video/fom-2026-highlights.mp4" poster="assets/video/hero-poster.jpg" muted loop playsinline autoplay preload="auto" aria-label="Highlights from the 2026 summit"></video></div>
   <button class="sound" id="soundBtn" type="button" aria-pressed="false" aria-label="Turn sound on">
     <svg class="i-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4V5z" fill="currentColor"/><path d="M22 9l-6 6M16 9l6 6"/></svg>
     <svg class="i-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4V5z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 010 7M18.5 5.5a9 9 0 010 13"/></svg>
+    <span>Sound</span>
   </button>
-  <div class="wrap hero-head">
-    <h1 class="hero-title" id="heroTitle"><span class="ln"><span>Future of Mining</span></span><span class="ln"><span>Summit 2027</span></span></h1>
-    <div class="hero-row">
-      <div class="hero-copy">
-        <p class="hero-when"><span data-config="dateLabel">June 2027</span>, <span data-config="venueShort">Gaborone, Botswana</span></p>
-        <p class="hero-sub">Botswana’s premier mining conference returns for its fourth edition. Two days where policy, capital and technology decide what Africa mines next, and what it makes from it.</p>
-        <div class="hero-cta">
-          <button class="btn btn-gold" type="button" data-register>Register and design your badge</button>
-          <button class="link" type="button" data-video>Watch the 2026 film <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
+  <div class="hero-in">
+    <p class="eyebrow hero-eb"><span>4th edition</span><span data-config="dateLabel">June 2027</span><span data-config="venueShort">Gaborone, Botswana</span></p>
+    <h1 class="hero-title" id="heroTitle"><span class="ln">Future of</span><span class="ln">Mining <em>Summit 2027</em></span></h1>
+    <div class="hero-foot">
+      <div class="next-card">
+        <p class="eyebrow">Next summit begins in</p>
+        <div class="digits" aria-label="Time until the summit opens"><span><b data-cd="d">000</b><i>days</i></span><span><b data-cd="h">00</b><i>hrs</i></span><span><b data-cd="m">00</b><i>min</i></span><span><b data-cd="s">00</b><i>sec</i></span></div>
+      </div>
+      <div class="hero-act">
+        <p>Botswana’s mining summit returns. Two days where policy, capital and technology decide what Africa mines next, and what it makes from it.</p>
+        <div class="cta-row"><button class="btn btn-gold" type="button" data-register>Register and design your badge</button><button class="btn btn-glass" type="button" data-video>Watch the 2026 film</button></div>
+      </div>
+    </div>
+  </div>
+  <div class="ticker" aria-hidden="true"><div class="ticker-track"><span>Future of Mining since 2024</span><span>Gaborone, Botswana</span><span>Fourth edition, June 2027</span><span>Mine. Make. Move forward.</span><span>Future of Mining since 2024</span><span>Gaborone, Botswana</span><span>Fourth edition, June 2027</span><span>Mine. Make. Move forward.</span></div></div>
+</section>
+
+<!-- ENDORSED -->
+<section class="endorse" aria-labelledby="endTitle">
+  <div class="wrap endorse-in">
+    <div class="gov"><img src="assets/logos/coat-of-arms-botswana.png" alt="Coat of arms of the Republic of Botswana" width="2844" height="2197"><div><p class="eyebrow">Endorsed by</p><h2 id="endTitle">Ministry of Minerals and Energy</h2></div></div>
+    <div class="endorse-logos"><img src="assets/logos/debswana.png" alt="Debswana" width="420" height="132"><img src="assets/logos/morupule-coal-mine.png" alt="Morupule Coal Mine" width="300" height="109"><img class="tall" src="assets/logos/botswana-chamber-of-mines.png" alt="Botswana Chamber of Mines, partner" width="555" height="292"></div>
+  </div>
+</section>
+
+<!-- MESSAGE -->
+<section class="msg" id="summit" aria-labelledby="msgTitle">
+  <div class="wrap">
+    <p class="eyebrow" data-reveal>From the organisers</p>
+    <h2 class="msg-text" id="msgTitle">Three summits in, Gaborone is where Africa’s mining <b>decisions</b> are made in public. In 2027 we go from what we <b>mine</b> to what we <b>make</b>.</h2>
+    <div class="msg-foot">
+      <img class="msg-mark" src="assets/logos/fom-africa-mark.png" alt="" width="120" height="128">
+      <p data-reveal>Ministers, mine operators, financiers, suppliers and the next generation share one stage. Every session ends in something concrete, with white papers developed alongside the Botswana Chamber of Mines and government.</p>
+    </div>
+    <dl class="stats">
+      <div data-reveal><dt class="eyebrow">Industry leaders</dt><dd><b data-count="2500">0</b></dd></div>
+      <div data-reveal style="--d:.06s"><dt class="eyebrow">International delegates</dt><dd><b data-count="800">0</b></dd></div>
+      <div data-reveal style="--d:.12s"><dt class="eyebrow">Companies</dt><dd><b data-count="600">0</b></dd></div>
+      <div data-reveal style="--d:.18s"><dt class="eyebrow">Exhibitors</dt><dd><b data-count="350">0</b></dd></div>
+      <div data-reveal style="--d:.24s"><dt class="eyebrow">CEOs on stage</dt><dd><b data-count="40">0</b></dd></div>
+    </dl>
+    <p class="note stats-note">The 2026 summit, in numbers.</p>
+  </div>
+</section>
+
+<!-- THE ROAD TO 2027 -->
+<section class="road" id="journey" aria-labelledby="roadTitle">
+  <div class="road-sticky">
+    <div class="wrap road-in">
+      <div class="road-top"><h2 class="eyebrow" id="roadTitle">The road to 2027</h2><p class="eyebrow"><span id="roadIdx">01</span> / 04</p></div>
+      <p class="odo" aria-hidden="true"><span>202</span><span class="odo-win"><span class="odo-strip"><span>4</span><span>5</span><span>6</span><span>7</span></span></span></p>
+      <div class="road-deck">
+        <figure class="rd"><img src="assets/img/ed-2024-stage.jpg" alt="The 2024 summit stage at Boipuso Hall" width="1240" height="800"><figcaption>Boipuso Hall, 2024</figcaption></figure>
+        <figure class="rd"><img src="assets/img/ed-2025-keynote.jpg" alt="A speaker addressing the 2025 summit" width="1400" height="934" loading="lazy"><figcaption>Boipuso Hall, 2025</figcaption></figure>
+        <figure class="rd"><img src="assets/img/ed-2026-hall.jpg" alt="A full Boipuso Hall during the 2026 summit" width="569" height="351" loading="lazy"><figcaption>Boipuso Hall, 2026</figcaption></figure>
+        <div class="rd rd-next"><p class="eyebrow">Save the date</p><p class="rd-date"><span data-config="dateLabel">June 2027</span></p><p>Boipuso Hall and Ditshupo Hall, Fairgrounds, Gaborone</p><button class="btn btn-dark" type="button" data-register>Register now</button></div>
+      </div>
+      <div class="road-text">
+        <div class="rt"><p class="eyebrow">First edition · 12–13 June 2024</p><h3>Building competitive <em>global players.</em></h3><p>The first summit, at Boipuso Hall in Gaborone.</p></div>
+        <div class="rt"><p class="eyebrow">Second edition · 18–19 June 2025</p><h3>New opportunities, <em>smart partnerships.</em></h3><p>Africa’s mining network starts meeting in Gaborone.</p></div>
+        <div class="rt"><p class="eyebrow">Third edition · 29–30 June 2026</p><h3>Mining for <em>transformation.</em></h3><p>2,500 industry leaders and 350 exhibitors in one room.</p></div>
+        <div class="rt"><p class="eyebrow">Fourth edition · June 2027</p><h3>From what we mine <em>to what we make.</em></h3><p>The plenary returns to Boipuso Hall; the exhibition fills Ditshupo Hall and the ground outside.</p></div>
+      </div>
+      <div class="road-track" aria-hidden="true"><span class="road-fill"></span><span class="rn on" style="--x:0%">2024</span><span class="rn" style="--x:33.333%">2025</span><span class="rn" style="--x:66.666%">2026</span><span class="rn" style="--x:100%">2027</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- VENUE AND PROGRAMME: the summit at a glance -->
+<section class="glance" id="venue" aria-labelledby="venueTitle">
+  <div class="wrap">
+    <div class="title-row">
+      <h2 class="title" id="venueTitle">Summit <em>at a glance</em></h2>
+      <p>Two days at the Gaborone Fairgrounds: the plenary in Boipuso Hall, the exhibition in Ditshupo Hall and on the open ground beside it.</p>
+    </div>
+    <div class="glance-grid">
+      <dl class="glance-facts">
+        <div><dt class="eyebrow">When</dt><dd data-config="dateLabel">June 2027</dd></div>
+        <div><dt class="eyebrow">Days</dt><dd>2</dd></div>
+        <div><dt class="eyebrow">Edition</dt><dd>4th</dd></div>
+        <div><dt class="eyebrow">First held</dt><dd>2024</dd></div>
+        <div><dt class="eyebrow">Halls</dt><dd>2 <small>+ outdoor ground</small></dd></div>
+      </dl>
+      <div class="glance-map"><iframe class="gmap" id="gmap" src="https://www.google.com/maps?q=Boipuso+Hall,+Fairground,+Gaborone,+Botswana&amp;z=16&amp;output=embed" title="Google Map of the Fairgrounds, Gaborone" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe><a class="gmap-open" id="gmapOpen" href="https://www.google.com/maps/search/?api=1&amp;query=Boipuso+Hall,+Fairground,+Gaborone,+Botswana" target="_blank" rel="noopener">Open in Google Maps</a></div>
+      <div class="glance-side">
+        <p class="eyebrow">Summit at</p>
+        <p class="glance-place">Gaborone</p>
+        <p>Delegates arrive at the main gate and park in Parking lot 2. Trucks and machinery use the service gate on the south road.</p>
+        <div class="sched">
+          <div class="sched-row head"><span class="eyebrow">Programme</span><span class="eyebrow">Where</span><span class="eyebrow">Time</span></div>
+          <div class="sched-row"><span>Build-up</span><span>Ditshupo Hall</span><span>Day 0, 07:00</span></div>
+          <div class="sched-row"><span>Registration</span><span>Boipuso foyer</span><span>Day 1, 07:00</span></div>
+          <div class="sched-row"><span>Opening plenary</span><span>Boipuso Hall</span><span>Day 1, 08:30</span></div>
+          <div class="sched-row"><span>Exhibition opens</span><span>Ditshupo Hall</span><span>Day 1, 10:00</span></div>
+          <div class="sched-row"><span>Panels and white papers</span><span>Boipuso Hall</span><span>Day 2, 08:30</span></div>
+          <div class="sched-row gold"><span>Networking dinner</span><span>To be announced</span><span>Day 2, 18:30</span></div>
+          <p class="note">*Provisional, Botswana time. Final programme to follow.</p>
         </div>
       </div>
-      <div class="count" aria-label="Time until the summit opens">
-        <div><b data-cd="d">000</b><span>days</span></div>
-        <div><b data-cd="h">00</b><span>hours</span></div>
-        <div><b data-cd="m">00</b><span>minutes</span></div>
-        <div><b data-cd="s">00</b><span>seconds</span></div>
-      </div>
     </div>
+    <div class="places" id="places"></div>
+    <div class="cta-row">
+      <a class="btn btn-gold" href="https://www.google.com/maps/dir/?api=1&amp;destination=Boipuso+Hall,+Fairground,+Gaborone,+Botswana" target="_blank" rel="noopener">Directions to Boipuso Hall</a>
+      <a class="btn btn-line" href="https://www.google.com/maps/dir/?api=1&amp;destination=Ditshupo+Hall,+Fairground,+Gaborone,+Botswana" target="_blank" rel="noopener">Directions to Ditshupo Hall</a>
+    </div>
+    <p class="note">Tap a place to find it on the map. Gates and parking arrangements are provisional until confirmed with Fairground Holdings.</p>
   </div>
 </section>
 
-<!-- ENDORSEMENTS -->
-<section class="endorse" aria-labelledby="endorseTitle">
-  <div class="wrap endorse-in">
-    <div class="gov" data-reveal>
-      <img src="assets/logos/coat-of-arms-botswana.png" alt="Coat of arms of the Republic of Botswana" width="2844" height="2197">
-      <div><h2 id="endorseTitle">Endorsed by the Ministry of Minerals and Energy</h2><span>Government of the Republic of Botswana</span></div>
+<!-- EVERY EDITION -->
+<section class="eds" id="editions" aria-labelledby="edsTitle">
+  <div class="wrap">
+    <div class="title-row">
+      <h2 class="title" id="edsTitle">Every <em>edition</em></h2>
+      <p>Each summit set the agenda for the next. Hover a row to see its poster.</p>
     </div>
-    <div class="endorse-logos" data-reveal style="--d:.1s">
-      <figure><img src="assets/logos/debswana.png" alt="Debswana" width="420" height="132"><figcaption>Endorsement</figcaption></figure>
-      <figure><img src="assets/logos/morupule-coal-mine.png" alt="Morupule Coal Mine" width="300" height="109"><figcaption>Endorsement</figcaption></figure>
-      <figure><img class="tall" src="assets/logos/botswana-chamber-of-mines.png" alt="Botswana Chamber of Mines" width="555" height="292"><figcaption>Partner</figcaption></figure>
+    <div class="ed-table" id="edTable">
+      <div class="ed-row head"><span class="eyebrow">Edition</span><span class="eyebrow">Theme</span><span class="eyebrow">Dates</span><span class="eyebrow">Venue</span><span class="eyebrow">In the room</span></div>
+      <h3 class="ed-year">2027</h3>
+      <a class="ed-row next" href="#passes" data-img="assets/img/ed-2026-hall.jpg"><span class="ed-n">04</span><span class="ed-theme">The fourth edition</span><span data-config="dateLabel">June 2027</span><span>Boipuso and Ditshupo Halls</span><span class="ed-go">Register <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <h3 class="ed-year">2026</h3>
+      <div class="ed-row" data-img="assets/img/ed-2026-poster.jpg"><span class="ed-n">03</span><span class="ed-theme">Mining for transformation: economic diversification and shared prosperity</span><span>29–30 June</span><span>Boipuso Hall</span><span>2,500 leaders</span></div>
+      <h3 class="ed-year">2025</h3>
+      <div class="ed-row" data-img="assets/img/ed-2025-poster.jpg"><span class="ed-n">02</span><span class="ed-theme">New opportunities, smart partnerships</span><span>18–19 June</span><span>Boipuso Hall</span><span>Speakers from across the region</span></div>
+      <h3 class="ed-year">2024</h3>
+      <div class="ed-row" data-img="assets/img/ed-2024-poster.jpg"><span class="ed-n">01</span><span class="ed-theme">Building competitive mining global players</span><span>12–13 June</span><span>Boipuso Hall</span><span>The first edition</span></div>
     </div>
-  </div>
-</section>
-
-<!-- JOURNEY: Africa's network converges on Gaborone as you scroll -->
-<section class="journey" id="journey" aria-label="Africa to Gaborone">
-  <div class="journey-sticky">
-    <div class="journey-gl" aria-hidden="true"></div>
-    <div class="geo-labels" aria-hidden="true"></div>
-
-    <div class="scene s1"><div class="scene-in">
-      <h2 class="scene-title">Africa holds what the world needs.</h2>
-      <p class="scene-sub">Diamonds, copper, cobalt, platinum, manganese and coal. The energy transition runs through African ground.</p>
-    </div></div>
-
-    <div class="scene s2"><div class="scene-in">
-      <h2 class="scene-title">Every line leads to Gaborone.</h2>
-      <p class="word-row"><span data-word=".5">Policy</span><span data-word=".54">Capital</span><span data-word=".58">Technology</span><span data-word=".62">Talent</span><span data-word=".66">Partnerships</span></p>
-    </div></div>
-
-    <div class="scene s3"><div class="scene-in">
-      <h2 class="std">Save the date</h2>
-      <p class="std-date"><span data-config="dateLabel">June 2027</span></p>
-      <p class="std-venue"><span data-config="venueLabel">Fairground Holdings, Gaborone, Botswana</span></p>
-      <div class="hero-cta">
-        <button class="btn btn-gold" type="button" data-register>Register now</button>
-        <a class="link" href="#exhibit">Exhibit or sponsor <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
-      </div>
-    </div></div>
-
-    <nav class="stops" aria-label="Jump along the journey">
-      <button type="button" data-stop="0"><span>Africa</span></button>
-      <button type="button" data-stop=".6"><span>Connected</span></button>
-      <button type="button" data-stop="1"><span>Gaborone</span></button>
-    </nav>
-  </div>
-</section>
-
-<!-- 2026 IN NUMBERS -->
-<section class="numbers" id="numbers" aria-labelledby="numTitle">
-  <div class="wrap numbers-grid">
-    <div class="numbers-head">
-      <h2 class="h2" id="numTitle" data-reveal>A continent in one room.</h2>
-      <p class="lede" data-reveal style="--d:.08s">Last June the industry came to Gaborone from across Africa and the world. These are the 2026 figures. In 2027 the network grows.</p>
-    </div>
-    <dl class="ledger">
-      <div data-reveal><dt>Industry leaders in the room</dt><dd data-count="2500">0</dd></div>
-      <div data-reveal style="--d:.06s"><dt>International delegates</dt><dd data-count="800">0</dd></div>
-      <div data-reveal style="--d:.12s"><dt>Participating companies</dt><dd data-count="600">0</dd></div>
-      <div data-reveal style="--d:.18s"><dt>Exhibiting companies</dt><dd data-count="350">0</dd></div>
-      <div data-reveal style="--d:.24s"><dt>CEOs of major companies on stage</dt><dd data-count="40">0</dd></div>
-    </dl>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section class="about light" id="about" aria-labelledby="aboutTitle">
-  <div class="wrap about-grid">
-    <div class="about-text">
-      <h2 class="h2" id="aboutTitle" data-reveal>From what we mine to what we make.</h2>
-      <p class="statement" data-reveal style="--d:.08s">Three editions in, the summit has become the room where Botswana’s mining decisions are made in public.</p>
-      <div class="about-body" data-reveal style="--d:.14s">
-        <p>Ministers, mine operators, financiers, suppliers and the next generation of professionals share one stage. In 2027 the conversation moves to beneficiation that creates jobs at home, new ways to finance the next wave of projects, the energy transition on site, and the skills a digital mine needs.</p>
-        <p>Every session ends in something concrete, with white papers developed alongside the Botswana Chamber of Mines and government.</p>
-      </div>
-    </div>
-    <figure class="about-fig" data-reveal="pop" style="--d:.1s">
-      <div class="about-img"><img src="assets/img/diamond.jpg" alt="A large rough diamond held up for inspection" width="1100" height="1352" loading="lazy"></div>
-      <figcaption><b>The 2027 focus: from diamonds to diversification.</b> Botswana built its economy on diamonds. The next chapter adds value at home: cutting, polishing, processing and the industries that grow around a mine.</figcaption>
-    </figure>
+    <img class="ed-peek" id="edPeek" alt="" aria-hidden="true">
   </div>
 </section>
 
 <!-- THEMES -->
 <section class="themes" id="themes" aria-labelledby="themesTitle">
   <div class="wrap">
-    <div class="sec-head">
-      <h2 class="h2" id="themesTitle" data-reveal>Eight themes. One decade.</h2>
-      <p class="lede" data-reveal style="--d:.08s">The 2027 agenda runs through the questions that will decide the industry’s next ten years.</p>
+    <div class="title-row">
+      <h2 class="title" id="themesTitle">Eight <em>themes</em></h2>
+      <p>The 2027 agenda runs through the questions that will decide the industry’s next ten years.</p>
     </div>
-    <div class="theme-list" id="themeGrid"></div>
+    <div class="theme-grid" id="themeGrid"></div>
+  </div>
+</section>
+
+<!-- MOMENTS: captioned photos and voices -->
+<section class="moments" aria-labelledby="momTitle">
+  <div class="wrap">
+    <div class="title-row"><h2 class="title" id="momTitle">On <em>the stage</em></h2><p>Three years of the summit, in pictures and in the speakers’ own words.</p></div>
+    <div class="mom-grid">
+      <figure class="mom m1" data-speed=".9"><img src="assets/img/ed-2024-stage.jpg" alt="The 2024 summit stage" width="1240" height="800" loading="lazy"><figcaption>Boipuso Hall, 2024</figcaption></figure>
+      <blockquote class="mom-q q1"><p>“The next chapter of Botswana’s mining story cannot simply be about extracting more minerals. It must be about unlocking value-chain opportunities.”</p><footer><b>Keabetswe Pheko-Moshagane</b>Managing Director, Absa Bank Botswana</footer></blockquote>
+      <figure class="mom m2" data-speed="1.08"><img src="assets/img/ed-2025-keynote.jpg" alt="A speaker addressing the 2025 summit" width="1400" height="934" loading="lazy"><figcaption>Boipuso Hall, 2025</figcaption></figure>
+      <figure class="mom m3" data-speed=".94"><img src="assets/img/ed-2026-panel.jpg" alt="A panel on the 2026 stage" width="576" height="477" loading="lazy"><figcaption>Boipuso Hall, 2026</figcaption></figure>
+      <figure class="mom m4" data-speed="1.06"><img src="assets/img/still-77.jpg" alt="Delegates at the outdoor equipment exhibition" width="1280" height="720" loading="lazy"><figcaption>Outdoor exhibition, 2026</figcaption></figure>
+      <blockquote class="mom-q q2"><p>“To those in the region, across Africa, and around the world: we are open for business.”</p><footer><b>Serty Leburu</b>Managing Director, DTC Botswana</footer></blockquote>
+      <figure class="mom m5" data-speed=".96"><img src="assets/img/ed-2026-hall.jpg" alt="A full hall during the 2026 summit" width="569" height="351" loading="lazy"><figcaption>Boipuso Hall, 2026</figcaption></figure>
+    </div>
   </div>
 </section>
 
@@ -192,193 +239,144 @@ window.FOM_ASSETS = {
 <section class="badge-sec" id="badge" aria-labelledby="badgeTitle">
   <div class="wrap badge-grid">
     <div class="badge-copy">
-      <h2 class="h2" id="badgeTitle" data-reveal>Design your badge.</h2>
-      <p class="lede" data-reveal style="--d:.08s">Registering for 2027 starts with your badge. Type your name and watch it print onto the lanyard, then pick a finish and a pass.</p>
-      <form class="quick" id="quick" data-reveal style="--d:.14s" autocomplete="on">
-        <div class="row">
-          <label class="field"><span>First name</span><input name="first" autocomplete="given-name" placeholder="Lesego"></label>
-          <label class="field"><span>Last name</span><input name="last" autocomplete="family-name" placeholder="Molefe"></label>
-        </div>
+      <h2 class="title" id="badgeTitle">Design <em>your badge</em></h2>
+      <p class="lede">Registering starts with your badge. Type your name and watch it print onto the lanyard, then pick a finish and a pass.</p>
+      <form class="quick" id="quick" autocomplete="on">
+        <div class="row"><label class="field"><span>First name</span><input name="first" autocomplete="given-name" placeholder="Lesego"></label><label class="field"><span>Last name</span><input name="last" autocomplete="family-name" placeholder="Molefe"></label></div>
         <label class="field"><span>Organisation</span><input name="org" autocomplete="organization" placeholder="Your company"></label>
         <div class="field"><span>Badge finish</span><div class="swatches" id="quickFinish" role="radiogroup" aria-label="Badge finish"></div></div>
         <div class="field"><span>Pass</span><div class="pass-pills" id="quickPass" role="radiogroup" aria-label="Pass type"></div></div>
         <button class="btn btn-gold" type="submit">Register with this badge</button>
       </form>
     </div>
-    <div class="badge-stage" data-reveal="pop">
+    <div class="badge-stage">
       <div class="lanyard" id="teaserStage"></div>
-      <div class="stage-tools">
-        <button class="chip-btn" type="button" id="teaserFlip">Flip badge</button>
-        <span class="hint">Drag the badge to swing it</span>
-      </div>
+      <div class="stage-tools"><button class="chip-btn" type="button" id="teaserFlip">Flip badge</button><span class="hint">Drag the badge to swing it</span></div>
     </div>
-  </div>
-</section>
-
-<!-- VOICES -->
-<section class="voices light" id="voices" aria-labelledby="voicesTitle">
-  <div class="wrap">
-    <h2 class="h2" id="voicesTitle" data-reveal>Heard on the 2026 stage.</h2>
-    <div class="quote-grid">
-      <figure class="quote lead" data-reveal>
-        <blockquote>“The next chapter of Botswana’s mining story cannot simply be about extracting more minerals. It must be about unlocking value-chain opportunities.”</blockquote>
-        <figcaption><img src="assets/img/keabetswe-pheko-moshagane.jpg" alt="" width="400" height="581" loading="lazy"><span><b>Keabetswe Pheko-Moshagane</b>Managing Director, Absa Bank Botswana</span></figcaption>
-      </figure>
-      <figure class="quote" data-reveal style="--d:.1s">
-        <blockquote>“DTC Botswana has an annual capacity of 45 million carats. To those in the region, across Africa, and around the world: we are open for business.”</blockquote>
-        <figcaption><img src="assets/img/serty-leburu.jpg" alt="" width="400" height="581" loading="lazy"><span><b>Serty Leburu</b>Managing Director, DTC Botswana</span></figcaption>
-      </figure>
-    </div>
-    <p class="voices-note" data-reveal>The 2026 theme, Mining for Transformation: Economic Diversification and Shared Prosperity, set the agenda for 2027.</p>
   </div>
 </section>
 
 <!-- PASSES -->
 <section class="passes" id="passes" aria-labelledby="passTitle">
   <div class="wrap">
-    <div class="sec-head">
-      <h2 class="h2" id="passTitle" data-reveal>Choose your pass.</h2>
-      <p class="lede" data-reveal style="--d:.08s">Prices in Botswana Pula, VAT included. Book five or more delegate passes and the group rate applies automatically.</p>
-    </div>
-    <p class="earlybird" id="earlybird" data-reveal></p>
+    <div class="title-row"><h2 class="title" id="passTitle">Choose <em>your pass</em></h2><p>Prices in Botswana Pula, VAT included. Five or more delegate passes in one order and the group rate applies.</p></div>
+    <p class="earlybird" id="earlybird"></p>
     <div class="pass-grid" id="passGrid"></div>
   </div>
 </section>
 
-<!-- EXHIBIT & SPONSOR -->
-<section class="exhibit light" id="exhibit" aria-labelledby="exTitle">
+<!-- EXHIBIT -->
+<section class="exhibit" id="exhibit" aria-labelledby="exTitle">
   <div class="wrap">
-    <div class="sec-head">
-      <h2 class="h2" id="exTitle" data-reveal>Exhibit and sponsor.</h2>
-      <p class="lede" data-reveal style="--d:.08s">Take a booth in the hall or outdoors with heavy equipment, or partner with the summit and own a moment of the programme.</p>
+    <div class="title-row"><h2 class="title" id="exTitle">Exhibit <em>with us</em></h2><p>Three stand sizes, inside Ditshupo Hall or outdoors with your machinery. Turn each one, see what’s included, then pick your spot on the floor.</p></div>
+  </div>
+  <div class="stall-pin" id="stallPin">
+    <div class="stall-sticky">
+      <div class="wrap stall">
+        <div class="stall-stage">
+          <div class="stall-gl" id="stallGl" role="img" aria-label="3D illustration of the exhibition stands: 3 by 3, 6 by 6 and the 12 by 12 outdoor plot"></div>
+          <ol class="stall-steps" id="stallSteps" aria-hidden="true"></ol>
+          <p class="stall-note">General illustration. Every stand can be customised: graphics, furniture, layout and extras. Keep scrolling to see the next size.</p>
+        </div>
+        <div class="stall-side">
+          <div class="stall-panels" id="stallPanels"></div>
+          <label class="field stall-brand"><span>See your company on the stand</span><input id="stallBrand" placeholder="Your company" maxlength="26" autocomplete="organization"></label>
+        </div>
+      </div>
     </div>
-    <div class="exhibit-grid">
-      <div data-reveal>
-        <h3 class="h3">Book a booth</h3>
-        <div class="booths" id="booths"></div>
-        <h3 class="h3 h3-gap">Sponsorship</h3>
-        <ul class="tiers" id="tiers"></ul>
-      </div>
-      <div data-reveal style="--d:.1s">
-        <form class="enquiry" id="enquiry" novalidate>
-          <h3 class="h3">Request the sponsorship prospectus</h3>
-          <div class="row">
-            <label class="field"><span>Your name</span><input name="name" autocomplete="name" required></label>
-            <label class="field"><span>Company</span><input name="company" autocomplete="organization" required></label>
-          </div>
-          <div class="row">
-            <label class="field"><span>Email</span><input name="email" type="email" autocomplete="email" required></label>
-            <label class="field"><span>Phone</span><input name="phone" type="tel" autocomplete="tel"></label>
-          </div>
-          <label class="field"><span>Interested in</span><select name="interest" id="interest"></select></label>
-          <label class="field"><span>Anything we should know</span><textarea name="message" rows="3"></textarea></label>
-          <button class="btn btn-dark" type="submit">Request prospectus</button>
-          <p class="status" role="status"></p>
-        </form>
-      </div>
+  </div>
+  <div class="wrap">
+    <div class="floor" id="floor">
+      <div class="floor-head"><h3 class="sub-title">Hand-pick <em>your spot</em></h3><div class="chips" id="floorFilter" role="group" aria-label="Show stands"></div></div>
+      <div class="floor-grid"><div class="floor-map" id="floorMap"></div><aside class="floor-pick" id="floorPick" aria-live="polite"></aside></div>
+      <p class="note">Sample floor plan with sample availability. The final layout is confirmed with Fairground Holdings, and stands are held once booked and paid.</p>
     </div>
   </div>
 </section>
 
-<!-- ORGANISER -->
-<section class="organiser" id="organiser" aria-labelledby="orgTitle">
-  <div class="wrap org-grid">
+<!-- SPONSOR -->
+<section class="sponsor" id="sponsor" aria-labelledby="spTitle">
+  <div class="wrap sponsor-grid">
     <div>
-      <div class="tp tp-lg" id="tp-org" role="img" aria-label="The Projects"></div>
-      <h2 class="org-title" id="orgTitle" data-reveal>Organised by The Projects Magazine.</h2>
-      <p data-reveal style="--d:.08s">The Projects is Botswana’s largest mining publication, profiling the projects, people and capital behind the country’s resources sector. The summit brings the magazine’s pages to life, and its special editions carry the conversation through the year.</p>
-      <a class="btn btn-dark" href="https://www.theprojectsbw.com" target="_blank" rel="noopener" data-reveal style="--d:.14s">Visit theprojectsbw.com</a>
+      <h2 class="title" id="spTitle">Own <em>a moment</em></h2>
+      <p class="lede">Name a session, host the dinner, or put your brand around every delegate’s neck.</p>
+      <ul class="tiers" id="tiers"></ul>
     </div>
-    <figure class="cover" data-reveal="pop">
-      <img src="assets/img/projects-magazine-june-2026.jpg" alt="The Projects Magazine June 2026 special edition: From diamonds to diversification" width="509" height="720" loading="lazy">
-      <figcaption>June 2026 special edition</figcaption>
-    </figure>
+    <form class="enquiry" id="enquiry" novalidate>
+      <h3 class="sub-title">Request the <em>prospectus</em></h3>
+      <div class="row"><label class="field"><span>Your name</span><input name="name" autocomplete="name" required></label><label class="field"><span>Company</span><input name="company" autocomplete="organization" required></label></div>
+      <div class="row"><label class="field"><span>Email</span><input name="email" type="email" autocomplete="email" required></label><label class="field"><span>Phone</span><input name="phone" type="tel" autocomplete="tel"></label></div>
+      <label class="field"><span>Interested in</span><select name="interest" id="interest"></select></label>
+      <label class="field"><span>Anything we should know</span><textarea name="message" rows="3"></textarea></label>
+      <button class="btn btn-dark" type="submit">Request prospectus</button>
+      <p class="status" role="status"></p>
+    </form>
   </div>
 </section>
 
-<!-- PARTNERS -->
-<section class="partners" id="partners" aria-labelledby="partnersTitle">
+<!-- COUNTDOWN -->
+<section class="countdown" aria-labelledby="cdTitle">
   <div class="wrap">
-    <h2 class="h3 partners-title" id="partnersTitle">Partners of past editions</h2>
-    <ul class="logo-row" id="logoRow">
-      <li><figure class="logo" tabindex="0"><img src="assets/logos/debswana.png" alt="Debswana" loading="lazy"></figure></li>
-      <li><figure class="logo" tabindex="0"><img src="assets/logos/de-beers-group.png" alt="De Beers Group" loading="lazy"></figure></li>
-      <li><figure class="logo" tabindex="0"><img src="assets/logos/dtc-botswana.png" alt="DTC Botswana" loading="lazy"></figure></li>
-      <li><figure class="logo" tabindex="0"><img src="assets/logos/okavango-diamond-company.png" alt="Okavango Diamond Company" loading="lazy"></figure></li>
-      <li><figure class="logo" tabindex="0"><img src="assets/logos/morupule-coal-mine.png" alt="Morupule Coal Mine" loading="lazy"></figure></li>
-      <li><figure class="logo" tabindex="0"><img src="assets/logos/mmg-khoemacau.png" alt="MMG Khoemacau" loading="lazy"></figure></li>
-      <li><figure class="logo" tabindex="0"><img src="assets/logos/botswana-chamber-of-mines.png" alt="Botswana Chamber of Mines" loading="lazy"></figure></li>
-      <li><figure class="logo" tabindex="0"><img src="assets/logos/pulamed.png" alt="Pulamed" loading="lazy"></figure></li>
-      <li><figure class="logo" tabindex="0"><img src="assets/logos/abaricom.png" alt="Abaricom" loading="lazy"></figure></li>
-    </ul>
-  </div>
-</section>
-
-<!-- GALLERY -->
-<section class="gallery" aria-labelledby="galTitle">
-  <div class="wrap gallery-head">
-    <h2 class="h2" id="galTitle" data-reveal>2026 in pictures.</h2>
-    <div class="g-ctrl"><button class="g-btn" type="button" data-g="-1" aria-label="Previous photos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg></button><button class="g-btn" type="button" data-g="1" aria-label="Next photos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
-  </div>
-  <div class="strip" id="strip" tabindex="0" aria-label="Photos from 2026, scroll sideways">
-    <img src="assets/img/still-46.jpg" alt="A speaker at the podium in front of the summit backdrop" width="1280" height="720" loading="lazy">
-    <img src="assets/img/still-77.jpg" alt="Delegates walking through the outdoor equipment exhibition" width="1280" height="720" loading="lazy">
-    <img src="assets/img/still-91.jpg" alt="Delegates taking a selfie at the exhibition" width="1280" height="720" loading="lazy">
-    <img src="assets/img/still-62.jpg" alt="Summit banners at the Gaborone fairgrounds" width="1280" height="720" loading="lazy">
-    <img src="assets/img/still-52.jpg" alt="The summit stage" width="1280" height="720" loading="lazy">
-    <img src="assets/img/still-84.jpg" alt="Summit exhibition" width="1280" height="720" loading="lazy">
-    <img src="assets/img/still-10.jpg" alt="The stage screens during a session" width="1280" height="720" loading="lazy">
+    <h2 class="title" id="cdTitle">Next summit <em>begins in…</em></h2>
+    <div class="cd-digits" aria-hidden="true"><span><b data-cd="d">000</b><i>days</i></span><span><b data-cd="h">00</b><i>hours</i></span><span><b data-cd="m">00</b><i>minutes</i></span><span><b data-cd="s">00</b><i>seconds</i></span></div>
+    <div class="cd-foot"><p class="eyebrow"><span data-config="dateLabel">June 2027</span> · Gaborone</p><button class="btn btn-dark" type="button" data-register>Register for 2027</button></div>
   </div>
 </section>
 
 <!-- FAQ -->
-<section class="faq-sec light" aria-labelledby="faqTitle">
-  <div class="wrap">
+<section class="faq-sec" id="faq" aria-labelledby="faqTitle">
+  <div class="wrap faq-grid">
+    <div><h2 class="title" id="faqTitle">Good <em>questions</em></h2><p class="lede">Can’t find it here? Email <a data-config-href="email" href="#">the summit team</a>.</p></div>
     <div class="faq">
-      <div class="qa"><h2 class="faq-head" id="faqTitle">Questions, answered.</h2><span></span></div>
-      <div class="qa" data-reveal><h3>When and where is the 2027 summit?</h3><p data-config="faqWhen">In Gaborone, Botswana in June 2027. Exact dates and venue will be confirmed here and emailed to everyone registered.</p></div>
-      <div class="qa" data-reveal><h3>How can I pay?</h3><p>By Visa or Mastercard. Payment happens on the payment provider’s secure page, so we never see your card details. You get a receipt by email straight away.</p></div>
-      <div class="qa" data-reveal><h3>Is there a group rate?</h3><p>Book five or more delegate passes in one order and 10% comes off those passes automatically.</p></div>
-      <div class="qa" data-reveal><h3>Can I change my badge or transfer my pass?</h3><p>Yes. Email us your booking reference before the summit to update badge details or transfer a pass to a colleague at no cost.</p></div>
-      <div class="qa" data-reveal><h3>Is it free for students?</h3><p>Yes. Under the Young Leaders programme, full-time students attend both days free. Register online and bring a valid student card to registration.</p></div>
+      <details open><summary>How do I use my pass?</summary><p>After you register, each person gets their badge and QR code by email. Show the QR on your phone at the registration desk in the Boipuso Hall foyer and your printed badge is handed over. Wear it all day: it is scanned at the hall doors and in Ditshupo Hall.</p></details>
+      <details><summary>Where do I park?</summary><p>Delegates park in Parking lot 2, between Boipuso Hall and Ditshupo Hall, two minutes’ walk from registration. Speakers and guests of honour use the north car park off the main road. Parking is free; marshals will direct you. <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Boipuso+Hall,+Fairground,+Gaborone,+Botswana" target="_blank" rel="noopener">Directions in Google Maps</a>.</p></details>
+      <details><summary>Where do heavy trucks enter?</summary><p>Through the service gate on the south road, straight to Ditshupo Hall’s loading doors and the outdoor ground, never through delegate parking. Trucks and machinery move in on the two days before the summit in booked slots, emailed after you book a stand.</p></details>
+      <details><summary>When can exhibitors set up?</summary><p>Ditshupo Hall opens for build-up the day before the summit, from 07:00 to 20:00. Outdoor plots open two days before for machinery. Breakdown starts after the closing session on day two.</p></details>
+      <details><summary>Is it free for students?</summary><p>Yes. Under the Young Leaders programme, full-time students attend both days free. Register online and bring a valid student card to registration.</p></details>
+      <details><summary>How can I pay?</summary><p>By Visa or Mastercard on the payment provider’s secure page, so we never see your card details. You get a receipt by email straight away.</p></details>
+      <details><summary>Can I change my badge or transfer my pass?</summary><p>Yes. Email us your booking reference before the summit to update a badge or transfer a pass to a colleague at no cost.</p></details>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section class="contact" id="contact" aria-labelledby="contactTitle">
-  <div class="wrap">
-    <h2 class="contact-lead" id="contactTitle" data-reveal>Talk to the summit team about passes, booths or partnerships.</h2>
-    <a class="contact-mail" data-config-href="email" href="#" data-reveal style="--d:.08s">info@futureofminingbw.com</a>
-    <div class="contact-row">
-      <div class="contact-details" data-reveal>
-        <p data-phone-row><span>Phone</span><a data-config-phone href="#"></a></p>
-        <p><span>Where</span><span data-config="venueLabel">Gaborone, Botswana</span></p>
-      </div>
-      <form class="signup" id="signup" novalidate data-reveal style="--d:.08s">
-        <label class="field"><span>Get programme updates by email</span>
-          <div class="signup-row"><input type="email" name="email" placeholder="you@company.co.bw" autocomplete="email" required><button class="btn btn-gold" type="submit">Sign up</button></div></label>
-        <p class="status" role="status"></p>
-      </form>
+<!-- ORGANISER AND PARTNERS -->
+<section class="org" id="organiser" aria-labelledby="orgTitle">
+  <div class="wrap org-grid">
+    <div>
+      <div class="tp tp-lg" id="tp-org" role="img" aria-label="The Projects"></div>
+      <h2 class="title" id="orgTitle">Organised by <em>The Projects</em></h2>
+      <p>Botswana’s largest mining publication, profiling the projects, people and capital behind the country’s resources sector. The summit brings the magazine’s pages to life.</p>
+      <a class="btn btn-dark" href="https://www.theprojectsbw.com" target="_blank" rel="noopener">Visit theprojectsbw.com</a>
     </div>
+    <figure class="cover"><img src="assets/img/projects-magazine-june-2026.jpg" alt="The Projects Magazine, June 2026 special edition" width="509" height="720" loading="lazy"><figcaption>June 2026 special edition</figcaption></figure>
+  </div>
+  <div class="marquee" aria-label="Partners of past editions">
+    <ul class="marquee-track" id="logoRow">
+      <li><figure class="logo"><img src="assets/logos/debswana.png" alt="Debswana" loading="lazy"></figure></li>
+      <li><figure class="logo"><img src="assets/logos/de-beers-group.png" alt="De Beers Group" loading="lazy"></figure></li>
+      <li><figure class="logo"><img src="assets/logos/dtc-botswana.png" alt="DTC Botswana" loading="lazy"></figure></li>
+      <li><figure class="logo"><img src="assets/logos/okavango-diamond-company.png" alt="Okavango Diamond Company" loading="lazy"></figure></li>
+      <li><figure class="logo"><img src="assets/logos/morupule-coal-mine.png" alt="Morupule Coal Mine" loading="lazy"></figure></li>
+      <li><figure class="logo"><img src="assets/logos/mmg-khoemacau.png" alt="MMG Khoemacau" loading="lazy"></figure></li>
+      <li><figure class="logo"><img src="assets/logos/botswana-chamber-of-mines.png" alt="Botswana Chamber of Mines" loading="lazy"></figure></li>
+      <li><figure class="logo"><img src="assets/logos/pulamed.png" alt="Pulamed" loading="lazy"></figure></li>
+      <li><figure class="logo"><img src="assets/logos/abaricom.png" alt="Abaricom" loading="lazy"></figure></li>
+    </ul>
   </div>
 </section>
 
 </main>
 
-<footer class="site-footer">
+<!-- FOOTER -->
+<footer class="foot" id="contact">
   <div class="wrap">
-    <p class="foot-mark" aria-hidden="true">Mine. Make. Move forward.</p>
-    <div class="foot">
-      <div>
-        <img class="foot-logo" src="assets/logos/fom-summit-2027.png" alt="The Future of Mining Summit 2027" width="1575" height="669" loading="lazy">
-        <p>Botswana’s premier mining conference. Organised by The Projects Magazine in partnership with the Botswana Chamber of Mines.</p>
-        <div class="social" data-socials></div>
-      </div>
-      <div><h3>Explore</h3><ul><li><a href="#about">About</a></li><li><a href="#themes">Themes</a></li><li><a href="#badge">Design your badge</a></li><li><a href="#passes">Passes</a></li><li><a href="#exhibit">Exhibit and sponsor</a></li></ul></div>
-      <div><h3>Get in touch</h3><ul><li><a data-config-href="email" href="#">info@futureofminingbw.com</a></li><li><a href="https://www.theprojectsbw.com" target="_blank" rel="noopener">theprojectsbw.com</a></li></ul></div>
+    <div class="foot-cols">
+      <div><p class="eyebrow">Pages</p><ul><li><a href="#summit">The summit</a></li><li><a href="#venue">Venue and programme</a></li><li><a href="#badge">Your badge</a></li><li><a href="#passes">Passes</a></li><li><a href="#exhibit">Exhibit</a></li><li><a href="#faq">Questions</a></li></ul></div>
+      <div><p class="eyebrow">Talk to us</p><ul><li><a data-config-href="email" href="#">info@futureofminingbw.com</a></li><li data-phone-row><a data-config-phone href="#"></a></li><li><a href="https://www.google.com/maps/dir/?api=1&amp;destination=Boipuso+Hall,+Fairground,+Gaborone,+Botswana" target="_blank" rel="noopener">Boipuso Hall, Fairgrounds</a></li></ul><div class="social" data-socials></div></div>
+      <form class="signup" id="signup" novalidate><p class="eyebrow">Programme updates</p><div class="signup-row"><label class="sr-only" for="su">Email</label><input id="su" type="email" name="email" placeholder="you@company.co.bw" autocomplete="email" required><button class="btn btn-gold btn-sm" type="submit">Sign up</button></div><p class="status" role="status"></p></form>
     </div>
-    <div class="foot-bottom"><span>&copy; <span id="yr"></span> The Projects Magazine. All rights reserved.</span><a href="#top">Back to top</a></div>
+    <p class="foot-impact" aria-label="Mine. Make. Move forward."><span>Mine.</span> <span>Make.</span> <span>Move forward.</span></p>
+    <div class="foot-bottom"><img src="assets/logos/fom-summit-2027.png" alt="The Future of Mining Summit 2027" width="1575" height="669" loading="lazy"><span>&copy; <span id="yr"></span> The Projects Magazine</span><a href="#top">Back to top</a></div>
   </div>
 </footer>
 
@@ -389,28 +387,15 @@ window.FOM_ASSETS = {
   <video id="reelVideo" src="assets/video/fom-2026-highlights.mp4" poster="assets/img/still-52.jpg" controls playsinline preload="none"></video>
 </dialog>
 
-<!-- REGISTRATION: design your badge -->
 <div class="reg" id="reg" role="dialog" aria-modal="true" aria-labelledby="regTitle" hidden>
   <div class="reg-top">
     <img src="assets/logos/fom-summit-2027.png" alt="" class="reg-logo">
-    <ol class="reg-steps" id="regSteps">
-      <li data-s="1">Passes</li><li data-s="2">Design badges</li><li data-s="3">Review</li><li data-s="4">Pay</li><li data-s="5">Done</li>
-    </ol>
+    <ol class="reg-steps" id="regSteps"><li data-s="1">Passes</li><li data-s="2">Design badges</li><li data-s="3">Review</li><li data-s="4">Pay</li><li data-s="5">Done</li></ol>
     <button class="reg-close" type="button" data-close aria-label="Close registration">&times;</button>
   </div>
   <div class="reg-body">
-    <div class="reg-stage">
-      <div class="lanyard" id="regStage"></div>
-      <div class="stage-tools">
-        <div class="badge-dots" id="badgeDots"></div>
-        <button class="chip-btn" type="button" id="regFlip">Flip badge</button>
-        <span class="hint">Drag to swing it</span>
-      </div>
-    </div>
-    <div class="reg-panel">
-      <div class="reg-main" id="regMain" data-lenis-prevent></div>
-      <div class="reg-bar" id="regBar"></div>
-    </div>
+    <div class="reg-stage"><div class="lanyard" id="regStage"></div><div class="stage-tools"><div class="badge-dots" id="badgeDots"></div><button class="chip-btn" type="button" id="regFlip">Flip badge</button><span class="hint">Drag to swing it</span></div></div>
+    <div class="reg-panel"><div class="reg-main" id="regMain" data-lenis-prevent></div><div class="reg-bar" id="regBar"></div></div>
   </div>
 </div>
 
@@ -421,11 +406,10 @@ window.FOM_ASSETS = {
 <script src="assets/js/vendor/three.min.js"></script>
 <script src="assets/js/vendor/qrcode.js"></script>
 <script src="assets/js/config.js"></script>
-<script src="assets/js/geo-data.js"></script>
 <script src="assets/js/badge.js"></script>
-<script src="assets/js/space.js"></script>
 <script src="assets/js/site.js"></script>
 <script src="assets/js/register.js"></script>
+<script src="assets/js/exhibit.js"></script>
 <script src="assets/js/motion.js"></script>
 </body>
 </html>

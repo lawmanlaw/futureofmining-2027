@@ -34,16 +34,6 @@
   }
   $$('.tp').forEach(buildTP);
 
-  /* ---------- splash ---------- */
-  const splash = $('#splash');
-  if (!document.documentElement.classList.contains('no-splash')) {
-    document.documentElement.style.overflow = 'hidden';
-    requestAnimationFrame(() => $('#tp-splash').classList.add('play'));
-    const intro = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--intro')) || 2.6;
-    setTimeout(() => { document.documentElement.style.overflow = ''; }, intro * 1000);
-    setTimeout(() => splash.classList.add('gone'), intro * 1000 + 1400);
-    try { sessionStorage.setItem('fom27-intro', '1'); } catch (e) {}
-  }
   // organiser logo replays whenever it scrolls into view
   const tpOrg = $('#tp-org');
   new IntersectionObserver(es => es.forEach(e => {
@@ -55,16 +45,16 @@
   function onScroll() {
     const y = scrollY, h = document.documentElement.scrollHeight - innerHeight;
     const jb = filmEl.getBoundingClientRect().bottom;
-    header.classList.toggle('solid', y > 8 || document.body.classList.contains('menu-open'));
+    header.classList.toggle('solid', y > innerHeight * .82 || document.body.classList.contains('menu-open'));
     float.classList.toggle('show', jb < innerHeight * .5 && y < h - 300);
   }
   addEventListener('scroll', onScroll, { passive: true }); onScroll();
   menu.addEventListener('click', () => {
     const open = !document.body.classList.contains('menu-open');
-    document.body.classList.toggle('menu-open', open); menu.setAttribute('aria-expanded', open);
+    document.body.classList.toggle('menu-open', open); menu.setAttribute('aria-expanded', open); if (window.FOMLenis) open ? window.FOMLenis.stop() : window.FOMLenis.start();
     menu.setAttribute('aria-label', open ? 'Close menu' : 'Open menu'); onScroll();
   });
-  $$('#navLinks a').forEach(a => a.addEventListener('click', () => { document.body.classList.remove('menu-open'); menu.setAttribute('aria-expanded', 'false'); }));
+  $$('#navLinks a').forEach(a => a.addEventListener('click', () => { document.body.classList.remove('menu-open'); menu.setAttribute('aria-expanded', 'false'); if (window.FOMLenis) window.FOMLenis.start(); }));
   const navMap = new Map($$('#navLinks a').map(a => [a.getAttribute('href').slice(1), a]));
   const navObs = new IntersectionObserver(es => es.forEach(e => {
     if (e.isIntersecting && navMap.get(e.target.id)) { navMap.forEach(a => a.classList.remove('active')); navMap.get(e.target.id).classList.add('active'); }
@@ -76,7 +66,7 @@
   function watch(root = document) { $$('[data-reveal]', root).forEach(el => { if (!reduced) { el.classList.add('pending'); rev.observe(el); } }); }
 
   /* ---------- countdown ---------- */
-  const cd = k => $(`[data-cd="${k}"]`), T0 = new Date(C.eventStart).getTime();
+  const cd = k => ({ set textContent(v) { $$(`[data-cd="${k}"]`).forEach(e => { e.textContent = v; }); } }), T0 = new Date(C.eventStart).getTime();
   function tick() {
     let t = Math.max(0, T0 - Date.now()) / 1000;
     const d = Math.floor(t / 86400); t -= d * 86400; const h = Math.floor(t / 3600); t -= h * 3600; const m = Math.floor(t / 60), s = Math.floor(t - m * 60);
@@ -109,7 +99,7 @@
     ['Partnerships', 'Transformative projects depend on government and the private sector investing together to create jobs and change lives.'],
     ['Beneficiation', 'Which policies will make sure Botswana’s minerals are processed at home, for more jobs and wider economic benefit?']
   ];
-  $('#themeGrid').innerHTML = THEMES.map(([t, d], i) => `<article class="theme" data-reveal style="--d:${(i % 2) * .06}s"><h3>${t}</h3><p>${d}</p></article>`).join('');
+  $('#themeGrid').innerHTML = THEMES.map(([t, d], i) => `<article class="theme" data-reveal style="--d:${(i % 4) * .06}s"><span class="n">${String(i + 1).padStart(2, '0')}</span><h3>${t}</h3><p>${d}</p></article>`).join('');
 
   /* ---------- passes, booths, tiers ---------- */
   const eb = earlyActive(), early = C.passes.find(p => p.early), std = C.passes.find(p => p.standard);
@@ -127,9 +117,9 @@
       <button class="btn ${p.featured ? 'btn-gold' : 'btn-ghost'}" type="button" data-register="${p.id}" ${on ? '' : 'disabled'}>${on ? (p.cta || 'Choose ' + p.name.split(' ')[0].toLowerCase()) : 'Not available yet'}</button>
     </article>`;
   }).join('');
-  $('#booths').innerHTML = C.booths.map(b => `<div class="booth"><h4>${b.name}<small>${b.size}</small></h4><p>${b.blurb} Includes ${b.passes} exhibitor passes.</p><span class="bp">${fmt(b.price)}</span><button class="btn btn-dark btn-sm" type="button" data-register="${b.id}">Book</button></div>`).join('');
+  if ($('#booths')) $('#booths').innerHTML = C.booths.map(b => `<div class="booth"><h4>${b.name}<small>${b.size}</small></h4><p>${b.blurb} Includes ${b.passes} exhibitor passes.</p><span class="bp">${fmt(b.price)}</span><button class="btn btn-dark btn-sm" type="button" data-register="${b.id}">Book</button></div>`).join('');
   $('#tiers').innerHTML = C.sponsorTiers.map(t => `<li><b>${t.name}</b><span>${t.note}</span></li>`).join('');
-  $('#interest').innerHTML = ['Not sure yet, show me the options', ...C.sponsorTiers.map(t => t.name + ' sponsorship'), 'Exhibition booth'].map(x => `<option>${x}</option>`).join('');
+  $('#interest').innerHTML = ['Not sure yet, show me the options', ...C.sponsorTiers.map(t => t.name + ' sponsorship'), 'Exhibition stand'].map(x => `<option>${x}</option>`).join('');
 
   /* ---------- forms ---------- */
   async function send(form, subject, lines, okMsg) {
@@ -167,9 +157,11 @@
   const setIcon = () => { sb.classList.toggle('on', !fv.muted); sb.setAttribute('aria-pressed', String(!fv.muted)); sb.setAttribute('aria-label', fv.muted ? 'Turn sound on' : 'Mute'); };
   const unmute = () => { fv.muted = false; fv.volume = 0.8; const pr = fv.play(); if (pr) pr.catch(() => { fv.muted = true; fv.play().catch(() => {}); setIcon(); }); setIcon(); };
   if (!reduced) {
-    unmute();
+    // with the loading screen up, sound waits for its "Enter" button; otherwise try straight away
+    if (!document.getElementById('loader')) unmute();
+    addEventListener('fom:enter', e => { const snd = e.detail && e.detail.sound; if (snd === true) { userMuted = false; unmute(); } else if (snd === false) { userMuted = true; fv.muted = true; setIcon(); } });
     const firstGesture = e => {
-      if (e.target.closest && e.target.closest('#soundBtn')) return;
+      if (e.target.closest && e.target.closest('#soundBtn, #loader')) return;
       if (!userMuted && fv.muted && !vm.open) unmute();
       ['pointerdown', 'keydown', 'touchend'].forEach(t => removeEventListener(t, firstGesture, true));
     };
@@ -191,15 +183,16 @@
   new IntersectionObserver(es => { if (es[0].isIntersecting && !reduced) { lightNext(); lt = setInterval(lightNext, 1600); } else { clearInterval(lt); logos.forEach(l => l.classList.remove('lit')); } }).observe($('#logoRow'));
 
   /* ---------- gallery drag ---------- */
-  const strip = $('#strip');
+  const strip = $('#strip') || document.createElement('div');
   let sx = 0, sl = 0, down = false;
   strip.addEventListener('pointerdown', e => { if (e.pointerType !== 'mouse') return; down = true; sx = e.clientX; sl = strip.scrollLeft; strip.classList.add('drag'); });
   addEventListener('pointerup', () => { down = false; strip.classList.remove('drag'); });
   addEventListener('pointermove', e => { if (down) strip.scrollLeft = sl - (e.clientX - sx); });
   $$('[data-g]').forEach(b => b.addEventListener('click', () => strip.scrollBy({ left: +b.dataset.g * strip.clientWidth * .8, behavior: 'smooth' })));
 
-  /* ---------- hero: from space to Gaborone ---------- */
-  window.FOMSpace = new window.FOMJourney($('#journey'));
+
+  // the globe only starts when its section comes near, so the first screen loads light
+
 
   /* ---------- Africa connects as you scroll (2026 numbers) ---------- */
   (function africaNet() {

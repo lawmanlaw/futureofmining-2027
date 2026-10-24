@@ -1,34 +1,35 @@
-# The Future of Mining Summit 2027 website
+# Future of Mining Summit 2027
 
-Static site: upload the whole folder to the web host for futureofminingbw.com. No build step.
+Website for the Future of Mining Summit 2027 in Gaborone, Botswana, organised by The Projects Magazine.
 
-## What's in it
-- Intro: The Projects logo, sliced from the real artwork, assembles letter by letter, then yellow and navy panels lift away (once per visit).
-- Hero: a scroll-driven journey from space. A dotted Earth in summit blue and gold turns to Africa, the logo's network connects city by city, then the camera drops into Botswana where every line converges on Gaborone, ending on the "Save the date". Map data: Natural Earth via world-atlas (public domain), pre-built into `assets/js/geo-data.js`.
-- 2026 in numbers: the poster's figures, with a map of Africa whose network draws itself as you scroll.
-- Registration: visitors design their own badge on a 3D lanyard (name, title, organisation, photo, finish, topics), review and flip it, pay by card, then download the badge with its QR code.
-- Endorsement banner (Ministry of Minerals and Energy, Debswana, Morupule Coal Mine, Botswana Chamber of Mines), themes, 2026 video, passes, exhibit and sponsor, organiser, partners, gallery, FAQ, contact.
+It is a static site with no build step. Open `index.html` locally, or host the folder on GitHub Pages, Netlify or any web server.
 
-## Before launch, confirm these (all in `assets/js/config.js`)
-- Event dates and countdown target (`dateLabel`, `eventStart`, `eventEnd`)
-- Venue (`venueLabel` is set to the 2026 venue, Fairground Holdings, Gaborone)
-- Social links
-- All pass and booth prices and the early-bird deadline
+## What's on the page
 
-## Taking real card payments
-The checkout runs in `paymentMode: 'demo'`: the full flow works, but no money moves and no card details are collected.
-To go live: open a merchant account with a card payment provider that supports Botswana (for example DPO Pay), add a small server endpoint (`paymentEndpoint`) that receives the order JSON (including each badge's details) and returns `{ "redirectUrl": "..." }` to the provider's secure card page, then set `paymentMode` to `'live'`. Never put provider secret keys in these files.
+- **Loader**: the year rolls from 2024 to 2027 while the page loads. Clicking *Enter* starts the hero film with sound. The loader is shown once per visit and is skipped for anyone who prefers reduced motion.
+- **Hero**: the 2026 highlights film with a mute toggle, plus a live countdown to the summit.
+- **Road to 2027**: a pinned story that tells each edition, 2024 → 2025 → 2026 → 2027, as you scroll.
+- **Summit at a glance**: venue facts, a live Google Map with clickable places (Boipuso Hall, Ditshupo Hall, Annex Hall, Fairground Holdings), Directions links and the provisional programme.
+- **Editions, themes, moments, badge builder, passes**: student passes are free under Young Leaders.
+- **Exhibit**: 3D stands that rebuild as you scroll, going 3×3 → 6×6 → 12×12 outdoor (a truck drives in). The fascia carries your brand. After that comes a stand picker on the floor plan.
+- **Sponsor tiers, FAQ** (passes, parking, heavy-vehicle entry), **organiser** and **footer sign-up**.
 
-## Design (v4, minimalist)
-Black ground, near-white text, gold only on actions. Light grey chapters alternate with black, paced like an Apple product page. The hero is the 2026 footage, which opens to full screen as you scroll.
+## Editing content
 
-## Fonts
-- Display (hero, headings, figures, badge name and pass label): Archivo Expanded, bundled in `assets/fonts/` (SIL Open Font License, see `ARCHIVO-OFL.txt`).
-- Text: Apple's SF Pro through the system font; other devices use Inter (bundled, open licence).
+Prices, stands, passes, venue labels and dates are all in `assets/js/config.js`.
 
-## Motion
-GSAP 3.13 with ScrollTrigger and SplitText (`assets/js/vendor/`), Lenis smooth scrolling, all set up in `assets/js/motion.js`. Visitors who ask their device for reduced motion get the finished page without movement.
+## Stack
 
-## Assets
-- `assets/logos/` transparent PNG logos, including the new `fom-summit-2027.png` lockup
-- `assets/video/hero-loop.mp4` silent loop for the video section; `fom-2026-highlights.mp4` full reel with sound
+- GSAP 3 with ScrollTrigger and SplitText
+- Lenis smooth scroll
+- three.js
+- qrcode.js
+
+Every library is vendored in `assets/js/vendor`.
+
+The fonts are Mona Sans and Instrument Serif (both SIL OFL), plus Archivo Expanded for the badge. They are self-hosted in `assets/fonts`.
+
+## Notes
+
+- Payments in the registration flow are a demo. Connect a real gateway before launch.
+- The Google Map embed only shows when the site is served from a real host.

@@ -7,7 +7,7 @@ window.FOM = {
   eventName: 'The Future of Mining Summit 2027',
   edition: '4th edition',
   dateLabel: 'June 2027',                       // CONFIRM e.g. '28–29 June 2027'
-  venueLabel: 'Fairground Holdings, Gaborone, Botswana', // CONFIRM (2026 venue)
+  venueLabel: 'Boipuso Hall and Ditshupo Hall, Fairgrounds, Gaborone', // CONFIRM (2024–2026 summits were at Boipuso Hall)
   venueShort: 'Gaborone, Botswana',
   eventStart: '2027-06-28T08:00:00+02:00',       // CONFIRM drives countdown and calendar file
   eventEnd:   '2027-06-29T17:00:00+02:00',       // CONFIRM
@@ -44,14 +44,17 @@ window.FOM = {
       includes: ['Both summit days', 'Exhibition access', 'Careers and skills sessions', 'Valid student card at registration'] }
   ],
 
-  /* Booths. Each booth comes with one lead exhibitor badge designed at booking. CONFIRM prices */
+  /* Exhibition stands. Each comes with one lead exhibitor badge designed at booking. CONFIRM prices and inclusions */
   booths: [
-    { id: 'booth-std',  name: 'Standard booth',          size: '3 m × 3 m',   price: 24500, passes: 2,
-      blurb: 'Shell scheme with fascia board, table, two chairs and power.' },
-    { id: 'booth-prem', name: 'Premium corner booth',    size: '6 m × 3 m',   price: 42000, passes: 4,
-      blurb: 'Two open sides on a main aisle, carpet, lighting and storage.' },
-    { id: 'booth-out',  name: 'Outdoor equipment stand', size: '10 m × 10 m', price: 38000, passes: 3,
-      blurb: 'Open ground space for vehicles and heavy machinery.' }
+    { id: 'stand-3', name: 'Shell stand', size: '3 m × 3 m', dims: [3, 3], price: 24500, passes: 2, zone: 'Ditshupo Hall',
+      blurb: 'Your own space on the exhibition floor, ready to move in.',
+      includes: ['Shell walls with your name on the fascia board', 'Carpet, one table and two chairs', 'Two spotlights and one 15 A power socket', 'Two exhibitor passes and a listing in the summit guide'] },
+    { id: 'stand-6', name: 'Premium stand', size: '6 m × 6 m', dims: [6, 6], price: 72000, passes: 4, zone: 'Ditshupo Hall',
+      blurb: 'A corner stand with two open sides on a main aisle.',
+      includes: ['Two open sides and fascia boards on both fronts', 'Reception counter, meeting table and four chairs', 'Lockable storage room and a 55-inch screen', 'Four spotlights, two power sockets, four exhibitor passes'] },
+    { id: 'stand-12', name: 'Outdoor plot', size: '12 m × 12 m', dims: [12, 12], price: 58000, passes: 6, zone: 'Outdoor exhibition ground',
+      blurb: 'Open ground for vehicles, heavy machinery and a branded marquee.',
+      includes: ['144 m² of level ground with heavy-vehicle access', '6 m × 6 m marquee, counter and lounge furniture', 'Two flag poles, signage totem and a 32 A power point', 'Six exhibitor passes and a guided move-in slot'] }
   ],
   exhibitorBadge: { label: 'EXHIBITOR', color: '#E2572B', ink: '#FFFFFF' },
 

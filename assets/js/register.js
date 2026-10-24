@@ -49,6 +49,7 @@
     const id = o.passId;
     if (id && PASS(id) && U.passOn(PASS(id))) S.cart[id] = Math.max(1, S.cart[id] || 0);
     if (id && BOOTH(id)) S.cart[id] = Math.max(1, S.cart[id] || 0);
+    S.stand = S.stand || {}; if (id && o.stand) S.stand[id] = o.stand;
     sync();
     if (o.prefill && id) {
       const i = S.badges.findIndex(b => b.passId === id);
@@ -114,7 +115,7 @@
   /* step 1: passes */
   function row(p, booth) {
     const on = booth || U.passOn(p), q = S.cart[p.id] || 0, max = booth ? 3 : 20;
-    const sub = booth ? `${p.size}. Includes ${p.passes} exhibitor passes` : on ? p.blurb : (p.early ? 'Early bird pricing has closed' : `Available from ${U.fmtDate(new Date(new Date(C.earlyBirdEnds).getTime() + 1000).toISOString())}`);
+    const sub = booth ? `${p.size}, ${p.zone}${S.stand && S.stand[p.id] ? `, stand ${S.stand[p.id]} held for you` : ''}. Includes ${p.passes} exhibitor passes` : on ? p.blurb : (p.early ? 'Early bird pricing has closed' : `Available from ${U.fmtDate(new Date(new Date(C.earlyBirdEnds).getTime() + 1000).toISOString())}`);
     return `<div class="item${q ? ' has' : ''}${on ? '' : ' off'}">
       <span class="dot" style="background:${booth ? C.exhibitorBadge.color : p.badge.color}"></span>
       <div><b>${p.name}</b><small>${sub}</small></div>
@@ -287,7 +288,7 @@
       buyer: { name: by.same ? `${b0.first} ${b0.last}` : by.name, email: by.same ? b0.email : by.email, phone: by.phone, company: by.company, invoiceCompany: by.invCo, tin: by.tin, address: by.address },
       items: t.lines.map(l => ({ id: l.p.id, name: l.p.name, qty: l.qty, unit: l.p.price })),
       discounts: { group: Math.round(t.group), promo: Math.round(t.promo), code: S.promo && S.promo.code },
-      total: Math.round(t.total), vat: Math.round(t.vat),
+      total: Math.round(t.total), vat: Math.round(t.vat), stands: S.stand || {},
       badges: S.badges.map(b => ({ type: label(b), pass: b.passId, booth: b.boothId, first: b.first, last: b.last, title: b.title, org: b.org, email: b.email, country: b.country, finish: b.finish, interests: b.interests, hasPhoto: !!b.photo }))
     };
     const ov = document.createElement('div'); ov.className = 'processing'; ov.setAttribute('role', 'status');
