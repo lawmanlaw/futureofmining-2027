@@ -834,20 +834,27 @@ html:not(.js) .loader,.no-splash .loader{display:none}
 .gmap-open{position:absolute;right:.8rem;bottom:.8rem;padding:.5rem .9rem;border-radius:999px;background:var(--ink);color:var(--paper);font-size:var(--t-small);font-weight:650;text-decoration:none}
 @media (max-width:700px){.glance-map{aspect-ratio:1/1}}
 
-/* Ministry endorsement pop-up, slides in from the right edge */
-.gov-pop{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:500;display:flex;align-items:center;gap:.9rem;max-width:min(360px,calc(100vw - 32px));padding:.9rem 2.6rem .9rem .9rem;background:var(--card);color:var(--ink);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:14px;box-shadow:0 18px 40px -18px rgba(31,30,26,.35);transform:translateX(calc(100% + 40px));opacity:0;transition:transform .7s var(--ease),opacity .4s}
-.gov-pop.on{transform:none;opacity:1}
-.gov-pop img{width:46px;height:auto;flex:none}
-.gov-pop .eyebrow{font-size:.68rem}
-.gov-pop-t{font-weight:600;line-height:1.25;margin-top:.15rem}
-.gov-pop-t b{font-weight:800}
-.gov-pop-y{display:flex;gap:.35rem;margin-top:.45rem}
-.gov-pop-y span{font-size:.72rem;font-weight:700;letter-spacing:.04em;padding:.18rem .5rem;border-radius:99px;background:var(--paper-2);opacity:0;transform:translateY(6px);transition:opacity .4s,transform .5s var(--ease)}
-.gov-pop.on .gov-pop-y span{opacity:1;transform:none}
-.gov-pop.on .gov-pop-y span:nth-child(1){transition-delay:.35s}
-.gov-pop.on .gov-pop-y span:nth-child(2){transition-delay:.5s}
-.gov-pop.on .gov-pop-y span:nth-child(3){transition-delay:.65s;background:var(--gold)}
-.gov-pop-x{position:absolute;top:.5rem;right:.5rem;width:30px;height:30px;display:grid;place-items:center;border:0;border-radius:50%;background:none;color:var(--grey)}
-.gov-pop-x:hover{background:var(--paper-2);color:var(--ink)}
-.gov-pop-x svg{width:15px;height:15px}
-@media (prefers-reduced-motion:reduce){.gov-pop,.gov-pop-y span{transition:opacity .2s}.gov-pop{transform:none}}
+/* Ministry endorsement cue: a caption on the hero's right edge, timed to the film */
+.hero-cue{position:absolute;z-index:3;right:0;top:calc(150px + env(safe-area-inset-top,0px));display:flex;align-items:center;gap:.85rem;max-width:min(380px,calc(100vw - 40px));padding:.85rem max(var(--pad),env(safe-area-inset-right,0px)) .85rem .95rem;color:#fff;background:rgba(13,13,12,.55);-webkit-backdrop-filter:blur(14px) saturate(1.3);backdrop-filter:blur(14px) saturate(1.3);border-left:3px solid var(--gold);border-radius:12px 0 0 12px;transform:translateX(105%);opacity:0;transition:transform .8s var(--ease),opacity .5s;pointer-events:none}
+.hero-cue.on{transform:none;opacity:1}
+.hero-cue img{width:42px;height:auto;flex:none;filter:drop-shadow(0 2px 6px rgba(0,0,0,.35))}
+.hero-cue .eyebrow{font-size:.66rem;color:rgba(255,255,255,.7)}
+.hero-cue-t{font-weight:600;line-height:1.2;margin-top:.15rem;font-size:1.02rem}
+.hero-cue-t b{font-weight:800;color:var(--gold-2)}
+.hero-cue-y{display:flex;gap:.35rem;margin-top:.45rem}
+.hero-cue-y span{font-size:.7rem;font-weight:700;letter-spacing:.04em;padding:.16rem .5rem;border-radius:99px;border:1px solid rgba(255,255,255,.28);opacity:0;transform:translateY(6px);transition:opacity .4s,transform .5s var(--ease)}
+.hero-cue.on .hero-cue-y span{opacity:1;transform:none}
+.hero-cue.on .hero-cue-y span:nth-child(1){transition-delay:.4s}
+.hero-cue.on .hero-cue-y span:nth-child(2){transition-delay:.55s}
+.hero-cue.on .hero-cue-y span:nth-child(3){transition-delay:.7s;background:var(--gold);border-color:var(--gold);color:var(--ink)}
+.hero-cue-s{display:none}
+@media (max-width:640px){
+  .hero-cue{top:auto;bottom:max(0px,calc(100% - 100svh));max-width:none;padding:.55rem max(var(--pad),env(safe-area-inset-right,0px)) calc(.55rem + env(safe-area-inset-bottom,0px)) .8rem;gap:.55rem;background:rgba(13,13,12,.82);border-radius:12px 0 0 0}
+  .hero-cue>div{display:flex;align-items:center;gap:.6rem}
+  .hero-cue img{width:24px}
+  .hero-cue .eyebrow,.hero-cue-t{display:none}
+  .hero-cue-s{display:block;font-weight:700;font-size:.82rem;white-space:nowrap}
+  .hero-cue-y{margin-top:0}
+  .hero-cue-y span{font-size:.64rem;padding:.08rem .42rem}
+}
+@media (prefers-reduced-motion:reduce){.hero-cue,.hero-cue-y span{transition:opacity .2s}.hero-cue{transform:none}}
