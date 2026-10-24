@@ -255,3 +255,26 @@
 
   watch();
 })();
+
+/* Ministry endorsement pop-up: appears at the screen edge when the endorsement bar comes into view,
+   stays about seven seconds, shows once per visit. */
+(function () {
+  const pop = document.getElementById('govPop'), bar = document.querySelector('.endorse');
+  if (!pop || !bar || !('IntersectionObserver' in window)) return;
+  let seen = false; try { seen = sessionStorage.getItem('fom27-govpop') === '1'; } catch (e) {}
+  if (seen) { pop.remove(); return; }
+  let t = 0;
+  const hide = () => { pop.classList.remove('on'); clearTimeout(t); setTimeout(() => pop.hidden = true, 700); };
+  pop.querySelector('.gov-pop-x').addEventListener('click', hide);
+  pop.addEventListener('mouseenter', () => clearTimeout(t));
+  pop.addEventListener('mouseleave', () => { t = setTimeout(hide, 3000); });
+  const io = new IntersectionObserver(es => {
+    if (!es.some(e => e.isIntersecting)) return;
+    io.disconnect();
+    try { sessionStorage.setItem('fom27-govpop', '1'); } catch (e) {}
+    pop.hidden = false;
+    requestAnimationFrame(() => requestAnimationFrame(() => pop.classList.add('on')));
+    t = setTimeout(hide, 7000);
+  }, { threshold: .6 });
+  io.observe(bar);
+})();

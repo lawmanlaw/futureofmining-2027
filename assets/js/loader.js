@@ -1,6 +1,6 @@
 /* Future of Mining Summit 2027: the loading screen.
-   Counts 000 to 100 as the fonts, the hero film and the page arrive (never longer than about five seconds),
-   then waits for "Enter the summit". That click is what lets the hero film play with sound.
+   The year rolls 2024, 2025, 2026 while the page loads, lands on 2027 once it is ready
+   (never later than about five seconds), then the site opens by itself.
    Shown once per visit; returning visitors and anyone who prefers reduced motion go straight in. */
 (function () {
   'use strict';
@@ -8,48 +8,37 @@
   const root = document.documentElement;
   if (root.classList.contains('no-splash')) { L.remove(); return; }
   root.style.overflow = 'hidden';
-  const strips = L.querySelectorAll('.ld-strip'), fill = document.getElementById('ldFill'), go = L.querySelector('.ld-go'), quiet = L.querySelector('.ld-quiet');
-  let target = 10, shown = 0, auto = 0, gone = false;
-  const t0 = performance.now(), bump = v => { target = Math.max(target, v); };
-  const start = () => {
-    bump(34);
-    (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => bump(56));
-    const v = document.querySelector('.film-video');
-    if (!v || v.readyState >= 2) bump(84);
-    else { v.addEventListener('loadeddata', () => bump(84), { once: true }); v.addEventListener('error', () => bump(84), { once: true }); }
-  };
-  document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', start, { once: true }) : start();
-  addEventListener('load', () => bump(100), { once: true });
-  setTimeout(() => bump(100), 5200);
+  const strip = L.querySelector('.ld-strip'), fill = document.getElementById('ldFill'), label = document.getElementById('ldTitle'), count = L.querySelector('.ld-count');
+  const names = ['The first edition', 'The second edition', 'The third edition', 'The fourth edition'];
+  const STEP = 700;                       // time each year stays on screen
+  let year = 0, loaded = false, gone = false;
 
-  // the last digit of the year rolls 2024, 2025, 2026, 2027 as the page arrives
-  const paint = n => {
-    strips[0].style.transform = `translateY(${-Math.min(3, Math.floor(n / 100 * 3.999)) * 25}%)`;
-    fill.style.setProperty('--p', (n / 100).toFixed(3));
+  const show = i => {
+    year = i;
+    strip.style.transform = `translateY(${-i * 25}%)`;
+    fill.style.setProperty('--p', ((i + 1) / 4).toFixed(3));
+    label.textContent = names[i];
   };
-  function tick(now) {
+  addEventListener('load', () => { loaded = true; }, { once: true });
+  setTimeout(() => { loaded = true; }, 5200);
+
+  show(0);
+  const step = () => {
     if (gone) return;
-    const allowed = Math.min(target, 8 + 92 * Math.min(1, (now - t0) / 1900));   // at least about two seconds, so it reads as a count
-    shown += (allowed - shown) * 0.1; if (allowed - shown < 0.3) shown = allowed;
-    paint(shown);
-    if (shown >= 99.7 && target >= 100) { paint(100); ready(); return; }
-    requestAnimationFrame(tick);
-  }
-  requestAnimationFrame(tick);
+    if (year < 2) { show(year + 1); return setTimeout(step, STEP); }
+    if (!loaded) return setTimeout(step, 120);          // hold on 2026 until the page is ready
+    show(3); L.classList.add('ready'); L.setAttribute('aria-busy', 'false');
+    setTimeout(open, 1000);                               // let 2027 land, then open the site
+  };
+  setTimeout(step, STEP);
 
-  function ready() {
-    L.classList.add('ready'); L.setAttribute('aria-busy', 'false');
-    auto = setTimeout(() => enter('auto', go), 9000);   // no choice made: go in quietly, the first tap turns sound on
-  }
-  function enter(sound, btn) {
-    if (gone) return; gone = true; clearTimeout(auto);
-    const r = btn.getBoundingClientRect();
-    L.style.setProperty('--cx', `${r.left + r.width / 2}px`); L.style.setProperty('--cy', `${r.top + r.height / 2}px`);
+  function open() {
+    if (gone) return; gone = true;
+    const r = count.getBoundingClientRect();
+    L.style.setProperty('--cx', `${r.right - r.height * .3}px`); L.style.setProperty('--cy', `${r.top + r.height / 2}px`);
     L.classList.add('out'); root.style.overflow = '';
     try { sessionStorage.setItem('fom27-loader', '1'); } catch (e) {}
-    dispatchEvent(new CustomEvent('fom:enter', { detail: { sound } }));
+    dispatchEvent(new CustomEvent('fom:enter', { detail: { sound: 'auto' } }));   // the visitor's first tap turns the film's sound on
     setTimeout(() => L.remove(), 1300);
   }
-  go.addEventListener('click', () => enter(true, go));
-  quiet.addEventListener('click', () => enter(false, quiet));
 })();

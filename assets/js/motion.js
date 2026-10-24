@@ -85,11 +85,13 @@
     const ST = window.SplitText;
     if (ST) {
       const hs = new ST('.hero-title .ln', { type: 'chars', mask: 'chars' });
-      gsap.from(hs.chars, { yPercent: 110, duration: 1.2, ease: 'expo.out', stagger: .025, delay: .25 });
+      (hs.masks || []).forEach(m => { m.style.paddingRight = '.16em'; m.style.marginRight = '-.16em'; });   // room for the italic 7's lean
+      gsap.from(hs.chars, { yPercent: 110, duration: 1.2, ease: 'expo.out', stagger: .025, delay: .25, onComplete: () => hs.revert() });
       gsap.from('.hero-eb, .hero-foot', { y: 24, opacity: 0, duration: 1, ease: 'expo.out', stagger: .12, delay: .6 });
       $$('main .title, .sub-title').forEach(h => {
         const s = new ST(h, { type: 'lines', mask: 'lines' });
-        gsap.from(s.lines, { yPercent: 105, duration: 1.1, ease: 'expo.out', stagger: .08, scrollTrigger: { trigger: h, start: 'top 88%', once: true } });
+        (s.masks || []).forEach(m => { m.style.paddingRight = '.16em'; m.style.marginRight = '-.16em'; });
+        gsap.from(s.lines, { yPercent: 105, duration: 1.1, ease: 'expo.out', stagger: .08, scrollTrigger: { trigger: h, start: 'top 88%', once: true }, onComplete: () => s.revert() });
       });
       const m = $('.msg-text');
       if (m) { const s = new ST(m, { type: 'words' }); gsap.fromTo(s.words, { opacity: .15 }, { opacity: 1, ease: 'none', stagger: .05, scrollTrigger: { trigger: m, start: 'top 80%', end: 'bottom 40%', scrub: true } }); }
