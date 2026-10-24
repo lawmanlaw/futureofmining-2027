@@ -259,13 +259,17 @@
 /* Ministry endorsement pop-up: timed to the hero film. It slides in at the screen edge the moment the
    minister says "three consecutive years" (about 18 s in), on every loop, until the visitor closes it. */
 (function () {
-  const pop = document.getElementById('govPop'), v = document.querySelector('.film-video');
-  if (!pop || !v) return;
+  const pop = document.getElementById('govPop'), vids = [document.querySelector('.film-video'), document.getElementById('reelVideo')].filter(Boolean);
+  const modal = document.getElementById('videoModal');
+  if (!pop || !vids.length) return;
   const CUE = 17.6, STAY = 6500;          // seconds into the film, and how long the card stays
-  let t = 0, closed = false, last = 0;
+  let t = 0, closed = false;
   const hide = () => { pop.classList.remove('on'); clearTimeout(t); setTimeout(() => { if (!pop.classList.contains('on')) pop.hidden = true; }, 700); };
   const show = () => {
     if (closed) return;
+    // inside the full-screen film player the card must live in the dialog, or it sits behind it
+    const host = modal && modal.open ? modal : document.body;
+    if (pop.parentNode !== host) host.appendChild(pop);
     pop.hidden = false;
     requestAnimationFrame(() => requestAnimationFrame(() => pop.classList.add('on')));
     clearTimeout(t); t = setTimeout(hide, STAY);
@@ -273,9 +277,13 @@
   pop.querySelector('.gov-pop-x').addEventListener('click', () => { closed = true; hide(); });
   pop.addEventListener('mouseenter', () => clearTimeout(t));
   pop.addEventListener('mouseleave', () => { if (pop.classList.contains('on')) t = setTimeout(hide, 2500); });
-  v.addEventListener('timeupdate', () => {
-    const now = v.currentTime;
-    if (last < CUE && now >= CUE && now < CUE + 2) show();   // crossed the line while playing (not a jump)
-    last = now;
+  if (modal) modal.addEventListener('close', () => { if (pop.parentNode === modal) { hide(); document.body.appendChild(pop); } });
+  vids.forEach(v => {
+    let last = 0;
+    v.addEventListener('timeupdate', () => {
+      const now = v.currentTime;
+      if (!v.paused && last < CUE && now >= CUE && now < CUE + 2) show();   // reached the line while playing
+      last = now;
+    });
   });
 })();
